@@ -20,7 +20,6 @@ export async function getStaticProps(context) {
 }
 
 export default function Home(props) {
-  // const [coffeeStores, setCoffeeStores] = useState([]);
   const [coffeeStoresError, setCoffeeStoresError] = useState(null);
 
   const {
@@ -39,7 +38,6 @@ export default function Home(props) {
             `/api/getCoffeeStoresByLocation?latLong=${latLong}&limit=30`
           );
           const coffeeStores = await res.json();
-          // setCoffeeStores(fetchedCoffeeStores);
           dispatch({
             type: ACTION_TYPES.SET_COFFEE_STORES,
             payload: { coffeeStores },
@@ -61,17 +59,16 @@ export default function Home(props) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Coffee Connoisseur</title>
+        <title>Restaurant Connoisseur</title>
         <link rel="icon" href="/favicon.ico" />
-        <meta
-          name="description"
-          content="allows you to discover coffee stores"
-        />
+        <meta name="description" content="allows you to discover restaurants" />
       </Head>
 
       <main className={styles.main}>
         <Banner
-          buttonText={isFindingLocation ? "loading..." : "View stores nearby"}
+          buttonText={
+            isFindingLocation ? "loading..." : "View restaurants nearby"
+          }
           handleOnClick={handleOnBannerBtnClick}
         />
         {locationErrorMsg && <p>Something went wrong: {locationErrorMsg}</p>}
@@ -88,7 +85,7 @@ export default function Home(props) {
 
         {coffeeStores.length > 0 && (
           <div className={styles.sectionWrapper}>
-            <h2 className={styles.heading2}>Stores near me</h2>
+            <h2 className={styles.heading2}>Restaurants near me</h2>
             <div className={styles.cardLayout}>
               {coffeeStores.map((coffeeStore) => (
                 <Card
@@ -108,7 +105,7 @@ export default function Home(props) {
 
         {props.coffeeStores.length > 0 && (
           <div className={styles.sectionWrapper}>
-            <h2 className={styles.heading2}>Island stores</h2>
+            <h2 className={styles.heading2}>Island restaurants</h2>
             <div className={styles.cardLayout}>
               {props.coffeeStores.map((coffeeStore) => (
                 <Card

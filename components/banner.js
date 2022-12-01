@@ -4,10 +4,10 @@ const Banner = (props) => {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>
-        <span className={styles.title1}>Coffee</span>
+        <span className={styles.title1}>Restaurant</span>
         <span className={styles.title2}>Connoisseur</span>
       </h1>
-      <p className={styles.subTitle}>Discover your local coffee shops!</p>
+      <p className={styles.subTitle}>Discover your local restaurants!</p>
       <div className={styles.buttonWrapper}>
         <button className={styles.button} onClick={props.handleOnClick}>
           {props.buttonText}
