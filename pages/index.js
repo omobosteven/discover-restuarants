@@ -35,8 +35,10 @@ export default function Home(props) {
     async function setCoffeeStoresByLocation() {
       if (latLong) {
         try {
-            const res = await fetch(`/api/getCoffeeStoresByLocation?latLong=${latLong}&limit=30`);
-            const coffeeStores = await res.json();
+          const res = await fetch(
+            `/api/getCoffeeStoresByLocation?latLong=${latLong}&limit=30`
+          );
+          const coffeeStores = await res.json();
           // setCoffeeStores(fetchedCoffeeStores);
           dispatch({
             type: ACTION_TYPES.SET_COFFEE_STORES,
@@ -61,6 +63,10 @@ export default function Home(props) {
       <Head>
         <title>Coffee Connoisseur</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta
+          name="description"
+          content="allows you to discover coffee stores"
+        />
       </Head>
 
       <main className={styles.main}>
@@ -72,7 +78,12 @@ export default function Home(props) {
         {coffeeStoresError && <p>Something went wrong: {coffeeStoresError}</p>}
 
         <div className={styles.heroImage}>
-          <Image src="/static/hero-image.png" width={700} height={400} />
+          <Image
+            src="/static/hero-image.png"
+            width={700}
+            height={400}
+            alt="hero image"
+          />
         </div>
 
         {coffeeStores.length > 0 && (
